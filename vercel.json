@@ -1,9 +1,16 @@
 {
+  "version": 2,
+  "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/drugscope build",
   "outputDirectory": "artifacts/drugscope/dist/public",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "framework": "vite",
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
